@@ -1,0 +1,32 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Podaj średnią ocen:");
+
+        if (double.TryParse(Console.ReadLine(), out double sredniaOcen))
+        {
+            switch (sredniaOcen)
+            {
+                case double ocena when ocena >= 2.00 && ocena < 4.00:
+                    Console.WriteLine("Kwota stypendium: 0,00 zł");
+                    break;
+                case double ocena when ocena >= 4.00 && ocena < 4.80:
+                    Console.WriteLine("Kwota stypendium: 350,00 zł");
+                    break;
+                case double ocena when ocena >= 4.80 && ocena <= 5.00:
+                    Console.WriteLine("Kwota stypendium: 550,00 zł");
+                    break;
+                default:
+                    Console.WriteLine("Błąd: Nieprawidłowa wartość średniej ocen.");
+                    break;
+            }
+        }
+        else
+        {
+            Console.WriteLine("Błąd: Nieprawidłowy format średniej ocen.");
+        }
+    }
+}
