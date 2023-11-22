@@ -1,0 +1,18 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int suma = 0;
+        int liczbaLiczb = 0;
+
+        while (suma <= 100)
+        {
+            liczbaLiczb++;
+            suma += liczbaLiczb;
+        }
+
+        Console.WriteLine($"Suma przekroczy 100 po dodaniu {liczbaLiczb} kolejnych liczb całkowitych.");
+    }
+}
