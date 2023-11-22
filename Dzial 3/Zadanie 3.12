@@ -1,0 +1,28 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int suma = 0;
+        int liczba;
+
+        Console.WriteLine("Podawaj liczby całkowite. Wprowadź 0, aby zakończyć.");
+
+        do
+        {
+            Console.Write("Podaj liczbę: ");
+            if (int.TryParse(Console.ReadLine(), out liczba))
+            {
+                suma += liczba;
+            }
+            else
+            {
+                Console.WriteLine("Błąd: Wprowadzono nieprawidłową liczbę. Spróbuj ponownie.");
+            }
+
+        } while (liczba != 0);
+
+        Console.WriteLine($"Suma wprowadzonych liczb: {suma}");
+    }
+}
