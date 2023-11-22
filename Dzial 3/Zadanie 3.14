@@ -1,0 +1,41 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Podaj liczbę n:");
+
+        if (int.TryParse(Console.ReadLine(), out int n) && n > 1)
+        {
+            Console.WriteLine($"Liczby doskonałe w przedziale od 1 do {n}:");
+
+            for (int i = 1; i <= n; i++)
+            {
+                if (CzyDoskonala(i))
+                {
+                    Console.WriteLine(i);
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("Błąd: Podano nieprawidłową liczbę.");
+        }
+    }
+
+    static bool CzyDoskonala(int liczba)
+    {
+        int sumaDzielnikow = 0;
+
+        for (int i = 1; i < liczba; i++)
+        {
+            if (liczba % i == 0)
+            {
+                sumaDzielnikow += i;
+            }
+        }
+
+        return sumaDzielnikow == liczba;
+    }
+}
