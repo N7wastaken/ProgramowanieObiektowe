@@ -1,0 +1,76 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Podaj liczbę elementów tablicy: ");
+
+        if (int.TryParse(Console.ReadLine(), out int liczbaElementow) && liczbaElementow > 0)
+        {
+            int[] tablica = new int[liczbaElementow];
+
+            for (int i = 0; i < liczbaElementow; i++)
+            {
+                Console.Write($"Podaj wartość dla elementu {i + 1}: ");
+                if (int.TryParse(Console.ReadLine(), out int wartosc))
+                {
+                    tablica[i] = wartosc;
+                }
+                else
+                {
+                    Console.WriteLine("Błąd: Podano nieprawidłową wartość. Wartość zostanie pominięta.");
+                    i--; 
+                }
+            }
+
+            int maxWartosc = tablica[0];
+            int maxPozycja = 0;
+            for (int i = 1; i < liczbaElementow; i++)
+            {
+                if (tablica[i] > maxWartosc)
+                {
+                    maxWartosc = tablica[i];
+                    maxPozycja = i;
+                }
+            }
+
+            int minWartosc = tablica[0];
+            int minPozycja = 0;
+            for (int i = 1; i < liczbaElementow; i++)
+            {
+                if (tablica[i] < minWartosc)
+                {
+                    minWartosc = tablica[i];
+                    minPozycja = i;
+                }
+            }
+
+            double suma = 0;
+            for (int i = 0; i < liczbaElementow; i++)
+            {
+                suma += tablica[i];
+            }
+            double srednia = suma / liczbaElementow;
+
+            int liczbaDodatnich = 0;
+            for (int i = 0; i < liczbaElementow; i++)
+            {
+                if (tablica[i] > 0)
+                {
+                    liczbaDodatnich++;
+                }
+            }
+
+            Console.WriteLine("\nInformacje o tablicy:");
+            Console.WriteLine($"Największy element: {maxWartosc}, pozycja: {maxPozycja}");
+            Console.WriteLine($"Najmniejszy element: {minWartosc}, pozycja: {minPozycja}");
+            Console.WriteLine($"Średnia wartość: {srednia}");
+            Console.WriteLine($"Liczba wartości dodatnich: {liczbaDodatnich}");
+        }
+        else
+        {
+            Console.WriteLine("Błąd: Podano nieprawidłową liczbę elementów.");
+        }
+    }
+}
