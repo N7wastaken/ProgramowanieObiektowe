@@ -1,0 +1,43 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Wprowadź łańcuch znaków: ");
+        string lancuch = Console.ReadLine();
+
+        int liczbaWyrazow = ObliczLiczbeWyrazow(lancuch);
+
+        Console.WriteLine($"Liczba wyrazów w łańcuchu: {liczbaWyrazow}");
+    }
+
+    static int ObliczLiczbeWyrazow(string lancuch)
+    {
+        int liczbaWyrazow = 0;
+        bool jestCzesciaWyrazu = false;
+
+        foreach (char znak in lancuch)
+        {
+            if (char.IsWhiteSpace(znak))
+            {
+                if (jestCzesciaWyrazu)
+                {
+                    liczbaWyrazow++;
+                    jestCzesciaWyrazu = false;
+                }
+            }
+            else
+            {
+                jestCzesciaWyrazu = true;
+            }
+        }
+
+        if (jestCzesciaWyrazu)
+        {
+            liczbaWyrazow++;
+        }
+
+        return liczbaWyrazow;
+    }
+}
