@@ -1,0 +1,35 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int[] tab1 = { 1, 2, 3, 4, 5 }; // Przykładowa tablica źródłowa
+        int[] tab2 = new int[tab1.Length]; // Tablica docelowa
+
+        KopiujZPrzesunieciem(tab1, tab2);
+
+        Console.WriteLine("Tablica źródłowa (tab1):");
+        WyswietlTablice(tab1);
+
+        Console.WriteLine("\nTablica docelowa (tab2) po skopiowaniu z przesunięciem:");
+        WyswietlTablice(tab2);
+    }
+
+    static void KopiujZPrzesunieciem(int[] tab1, int[] tab2)
+    {
+        for (int i = 0; i < tab1.Length; i++)
+        {
+            tab2[(i + 1) % tab1.Length] = tab1[i];
+        }
+    }
+
+    static void WyswietlTablice(int[] tab)
+    {
+        foreach (var element in tab)
+        {
+            Console.Write(element + " ");
+        }
+        Console.WriteLine();
+    }
+}
