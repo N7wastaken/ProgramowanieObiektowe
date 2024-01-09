@@ -1,0 +1,73 @@
+using System;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        int[] tablica1 = { 1, 2, 3 };
+        int[] wynik1 = MnozenieTablicy(tablica1, 2);
+        WyswietlTablice(wynik1);
+
+        string[] tablica2 = { "ala", "kot", "dom" };
+        string[] wynik2 = MnozenieTablicy(tablica2, 2);
+        WyswietlTablice(wynik2);
+    }
+
+    static int[] MnozenieTablicy(int[] tablica, int mnoznik)
+    {
+        int[] wynik = new int[tablica.Length];
+
+        for (int i = 0; i < tablica.Length; i++)
+        {
+            wynik[i] = tablica[i] * mnoznik;
+        }
+
+        return wynik;
+    }
+
+    static void WyswietlTablice(int[] tablica)
+    {
+        Console.Write("[");
+        for (int i = 0; i < tablica.Length; i++)
+        {
+            Console.Write(tablica[i]);
+            if (i < tablica.Length - 1)
+            {
+                Console.Write(", ");
+            }
+        }
+        Console.WriteLine("]");
+    }
+
+    static string[] MnozenieTablicy(string[] tablica, int mnoznik)
+    {
+        string[] wynik = new string[tablica.Length];
+
+        for (int i = 0; i < tablica.Length; i++)
+        {
+            wynik[i] = string.Concat(RepeatString(tablica[i], mnoznik));
+        }
+
+        return wynik;
+    }
+
+    static string RepeatString(string str, int count)
+    {
+        return new string(str.ToCharArray().SelectMany(c => Enumerable.Repeat(c, count)).ToArray());
+    }
+
+    static void WyswietlTablice(string[] tablica)
+    {
+        Console.Write("[");
+        for (int i = 0; i < tablica.Length; i++)
+        {
+            Console.Write("\"" + tablica[i] + "\"");
+            if (i < tablica.Length - 1)
+            {
+                Console.Write(", ");
+            }
+        }
+        Console.WriteLine("]");
+    }
+}
