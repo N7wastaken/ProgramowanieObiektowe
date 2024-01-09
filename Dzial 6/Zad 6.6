@@ -1,0 +1,69 @@
+using System;
+
+class Punkt
+{
+    private double x;
+    private double y;
+
+    public Punkt(double x, double y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+    public double X
+    {
+        get { return x; }
+        set { x = value; }
+    }
+
+    public double Y
+    {
+        get { return y; }
+        set { y = value; }
+    }
+
+    public void Przesun(double deltaX, double deltaY)
+    {
+        x += deltaX;
+        y += deltaY;
+    }
+
+    public void Wyswietl()
+    {
+        Console.WriteLine($"Współrzędne: ({x}, {y})");
+    }
+
+    public static bool CzyNaProstej(Punkt punkt1, Punkt punkt2, Punkt punkt3)
+    {
+        return (punkt2.Y - punkt1.Y) * (punkt3.X - punkt2.X) == (punkt3.Y - punkt2.Y) * (punkt2.X - punkt1.X);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Punkt[] punkty = new Punkt[3];
+
+        for (int i = 0; i < 3; i++)
+        {
+            Console.Write($"Podaj współrzędne punktu {i + 1} (x y): ");
+            string[] input = Console.ReadLine().Split();
+            double x = Convert.ToDouble(input[0]);
+            double y = Convert.ToDouble(input[1]);
+
+            punkty[i] = new Punkt(x, y);
+        }
+
+        Console.WriteLine("\nPodane punkty:");
+        for (int i = 0; i < 3; i++)
+        {
+            punkty[i].Wyswietl();
+        }
+
+        bool czyNaProstej = Punkt.CzyNaProstej(punkty[0], punkty[1], punkty[2]);
+
+        Console.WriteLine("\nPunkty leżą na jednej prostej: " + czyNaProstej);
+    }
+}
