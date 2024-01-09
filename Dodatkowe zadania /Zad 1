@@ -1,0 +1,18 @@
+using System;
+
+class Pracownik
+{
+    public void Pracuj()
+    {
+        Console.WriteLine("Pracownik pracuje");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Pracownik pracownik = new Pracownik();
+        pracownik.Pracuj();
+    }
+}
