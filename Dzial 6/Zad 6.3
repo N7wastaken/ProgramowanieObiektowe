@@ -1,0 +1,74 @@
+using System;
+
+class Prostokat
+{
+    private double dlugosc;
+    private double szerokosc;
+
+    public Prostokat(double dlugosc, double szerokosc)
+    {
+        this.dlugosc = dlugosc;
+        this.szerokosc = szerokosc;
+    }
+
+    private double Powierzchnia()
+    {
+        return dlugosc * szerokosc;
+    }
+
+    private double Obwod()
+    {
+        return 2 * (dlugosc + szerokosc);
+    }
+
+    public void Prezentuj()
+    {
+        Console.WriteLine($"Długość prostokąta: {dlugosc}");
+        Console.WriteLine($"Szerokość prostokąta: {szerokosc}");
+        Console.WriteLine($"Powierzchnia prostokąta: {Powierzchnia()}");
+        Console.WriteLine($"Obwód prostokąta: {Obwod()}");
+        Console.WriteLine();
+    }
+
+    public static double PowierzchniaNajwiekszegoProstokata(Prostokat[] prostokaty)
+    {
+        if (prostokaty.Length == 0)
+        {
+            return 0.0;
+        }
+
+        double najwiekszaPowierzchnia = prostokaty[0].Powierzchnia();
+
+        foreach (var prostokat in prostokaty)
+        {
+            double powierzchnia = prostokat.Powierzchnia();
+            if (powierzchnia > najwiekszaPowierzchnia)
+            {
+                najwiekszaPowierzchnia = powierzchnia;
+            }
+        }
+
+        return najwiekszaPowierzchnia;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Prostokat[] prostokaty = new Prostokat[]
+        {
+            new Prostokat(5.0, 3.0),
+            new Prostokat(8.0, 4.0),
+            new Prostokat(6.0, 2.5)
+        };
+
+        foreach (var prostokat in prostokaty)
+        {
+            prostokat.Prezentuj();
+        }
+
+        double najwiekszaPowierzchnia = Prostokat.PowierzchniaNajwiekszegoProstokata(prostokaty);
+        Console.WriteLine($"Największa powierzchnia prostokąta: {najwiekszaPowierzchnia}");
+    }
+}
