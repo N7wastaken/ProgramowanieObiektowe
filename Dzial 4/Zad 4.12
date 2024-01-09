@@ -1,0 +1,31 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string tekst = "W parę godzin później, gdy noc zbierała się do odejścia,\n" +
+            "Puchatek obudził się nagle z uczuciem dziwnego przygnębienia.\n" +
+            "To uczucie dziwnego przygnębienia miewał już nieraz i wiedział,\n" +
+            "co ono oznacza. Był głodny. Więc poszedł do spiżarni,\n" +
+            "wgramolił się na krzesełko, sięgnął na górną półkę, ale nic nie znalazł.";
+
+        WyswietlStatystyki(tekst);
+    }
+
+    static void WyswietlStatystyki(string tekst)
+    {
+        string[] wiersze = tekst.Split('\n');
+
+        Console.WriteLine("Zawartość łańcucha:");
+        Console.WriteLine(tekst);
+
+        Console.WriteLine("\nLiczba wierszy: " + wiersze.Length);
+
+        Console.WriteLine("\nLiczba znaków w każdym wierszu:");
+        foreach (var wiersz in wiersze)
+        {
+            Console.WriteLine(wiersz.Length);
+        }
+    }
+}
