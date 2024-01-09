@@ -1,0 +1,32 @@
+using System;
+
+class Pracownik
+{
+    public virtual void Pracuj()
+    {
+        Console.WriteLine("Pracownik pracuje");
+    }
+}
+
+class Programista : Pracownik
+{
+    public override void Pracuj()
+    {
+        Console.WriteLine("Programista programuje");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Pracownik pracownik = new Pracownik();
+        pracownik.Pracuj(); // Wyświetli: Pracownik pracuje
+
+        Programista programista = new Programista();
+        programista.Pracuj(); // Wyświetli: Programista programuje
+
+        Pracownik p = new Programista();
+        p.Pracuj(); // Wyświetli: Programista programuje
+    }
+}
