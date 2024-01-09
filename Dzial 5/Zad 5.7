@@ -1,0 +1,38 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Podaj wartość x: ");
+        if (int.TryParse(Console.ReadLine(), out int x))
+        {
+            Console.Write("Podaj liczbę naturalną n: ");
+            if (int.TryParse(Console.ReadLine(), out int n) && n > 0)
+            {
+                int wynik = ObliczWyrazenie(x, n);
+                Console.WriteLine($"Wynik wyrażenia dla x={x} i n={n}: {wynik}");
+            }
+            else
+            {
+                Console.WriteLine("Błąd: Podano nieprawidłową liczbę n.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Błąd: Podano nieprawidłową wartość x.");
+        }
+    }
+
+    static int ObliczWyrazenie(int x, int n)
+    {
+        int wynik = 0;
+
+        for (int i = 1; i <= n; i++)
+        {
+            wynik += x + i;
+        }
+
+        return wynik;
+    }
+}
