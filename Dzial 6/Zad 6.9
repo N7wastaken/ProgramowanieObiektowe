@@ -1,0 +1,38 @@
+using System;
+
+struct Prostokat
+{
+    private double dlugosc;
+    private double szerokosc;
+
+    public Prostokat(double dlugosc, double szerokosc)
+    {
+        this.dlugosc = dlugosc;
+        this.szerokosc = szerokosc;
+    }
+
+    private double Powierzchnia()
+    {
+        return dlugosc * szerokosc;
+    }
+
+    private double Obwod()
+    {
+        return 2 * (dlugosc + szerokosc);
+    }
+
+    public void Prezentuj()
+    {
+        Console.WriteLine($"Powierzchnia prostokąta: {Powierzchnia()}");
+        Console.WriteLine($"Obwód prostokąta: {Obwod()}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Prostokat prostokat = new Prostokat(5, 8);
+        prostokat.Prezentuj();
+    }
+}
