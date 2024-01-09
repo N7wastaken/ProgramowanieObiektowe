@@ -1,0 +1,47 @@
+using System;
+
+struct Prostokat
+{
+    public double Dlugosc { get; set; }
+    public double Szerokosc { get; set; }
+
+    public Prostokat(double dlugosc, double szerokosc)
+    {
+        Dlugosc = dlugosc;
+        Szerokosc = szerokosc;
+    }
+
+    public double Powierzchnia()
+    {
+        return Dlugosc * Szerokosc;
+    }
+
+    public double Obwod()
+    {
+        return 2 * (Dlugosc + Szerokosc);
+    }
+
+    public void Prezentuj()
+    {
+        Console.WriteLine($"Powierzchnia prostokąta: {Powierzchnia()}");
+        Console.WriteLine($"Obwód prostokąta: {Obwod()}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Prostokat[] prostokaty = new Prostokat[3];
+
+        prostokaty[0] = new Prostokat(5, 8);
+        prostokaty[1] = new Prostokat(3, 6);
+        prostokaty[2] = new Prostokat(7, 10);
+
+        foreach (Prostokat prostokat in prostokaty)
+        {
+            prostokat.Prezentuj();
+            Console.WriteLine();
+        }
+    }
+}
