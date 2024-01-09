@@ -1,0 +1,39 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Podaj liczbę elementów tablicy: ");
+
+        if (int.TryParse(Console.ReadLine(), out int liczbaElementow) && liczbaElementow > 0)
+        {
+            int[] tablica = new int[liczbaElementow];
+
+            for (int i = 0; i < liczbaElementow; i++)
+            {
+                Console.Write($"Podaj wartość dla elementu {i + 1}: ");
+                if (int.TryParse(Console.ReadLine(), out int wartosc))
+                {
+                    tablica[i] = wartosc;
+                }
+                else
+                {
+                    Console.WriteLine("Błąd: Podano nieprawidłową wartość. Wartość zostanie pominięta.");
+                    i--; 
+                }
+            }
+
+            Console.WriteLine("Zawartość tablicy:");
+
+            foreach (var element in tablica)
+            {
+                Console.WriteLine(element);
+            }
+        }
+        else
+        {
+            Console.WriteLine("Błąd: Podano nieprawidłową liczbę elementów.");
+        }
+    }
+}
