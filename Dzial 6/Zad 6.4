@@ -1,0 +1,54 @@
+using System;
+
+class LicznikEnergii
+{
+    private double poczatkowyStanLicznika;
+    private double biezacyStanLicznika;
+
+    public LicznikEnergii(double poczatkowyStanLicznika)
+    {
+        this.poczatkowyStanLicznika = poczatkowyStanLicznika;
+        this.biezacyStanLicznika = poczatkowyStanLicznika;
+    }
+
+    public void ZarejestrujBiezacyStan(double biezacyStanLicznika)
+    {
+        this.biezacyStanLicznika = biezacyStanLicznika;
+    }
+
+    public double PobierzPoczatkowyStan()
+    {
+        return poczatkowyStanLicznika;
+    }
+
+    public double PobierzBiezacyStan()
+    {
+        return biezacyStanLicznika;
+    }
+
+    public double ObliczZuzycieEnergii()
+    {
+        return biezacyStanLicznika - poczatkowyStanLicznika;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        double poczatkowyStanLicznika = 1000.0;
+        LicznikEnergii licznik = new LicznikEnergii(poczatkowyStanLicznika);
+
+        double nowyBiezacyStan = 1200.0;
+        licznik.ZarejestrujBiezacyStan(nowyBiezacyStan);
+
+        double poczatkowyStan = licznik.PobierzPoczatkowyStan();
+        double biezacyStan = licznik.PobierzBiezacyStan();
+
+        Console.WriteLine($"Początkowy stan licznika: {poczatkowyStan}");
+        Console.WriteLine($"Bieżący stan licznika: {biezacyStan}");
+
+        double zuzycieEnergii = licznik.ObliczZuzycieEnergii();
+        Console.WriteLine($"Zużycie energii: {zuzycieEnergii}");
+    }
+}
