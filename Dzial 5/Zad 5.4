@@ -4,7 +4,7 @@ class Program
 {
     static void Main()
     {
-        int[] tablica = { 2, 4, 6, 8, 10 };
+        int[] tablica = { 1, 4, 6, 8, 2 };
 
         Console.WriteLine("Tablica przed mnożeniem:");
         WyswietlTablice(tablica);
@@ -12,13 +12,30 @@ class Program
         Console.Write("\nPodaj mnożnik: ");
         int mnoznik = Convert.ToInt32(Console.ReadLine());
 
-        MnozenieTablicy(tablica, mnoznik);
+        int[] wynikowaTablica = MnozenieTablicyNowa(tablica, mnoznik);
 
-        Console.WriteLine("\nTablica po mnożeniu:");
+        Console.WriteLine("\nTablica po mnożeniu (nowa tablica wynikowa):");
+        WyswietlTablice(wynikowaTablica);
+
+        MnozenieTablicyInPlace(tablica, mnoznik);
+
+        Console.WriteLine("\nTablica po mnożeniu (tablica wejściowa zmieniona):");
         WyswietlTablice(tablica);
     }
 
-    static void MnozenieTablicy(int[] tablica, int mnoznik)
+    static int[] MnozenieTablicyNowa(int[] tablica, int mnoznik)
+    {
+        int[] wynikowaTablica = new int[tablica.Length];
+
+        for (int i = 0; i < tablica.Length; i++)
+        {
+            wynikowaTablica[i] = tablica[i] * mnoznik;
+        }
+
+        return wynikowaTablica;
+    }
+
+    static void MnozenieTablicyInPlace(int[] tablica, int mnoznik)
     {
         for (int i = 0; i < tablica.Length; i++)
         {
