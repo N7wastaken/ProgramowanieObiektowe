@@ -1,0 +1,36 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int[] tab1 = { 3, -5, 7, 0, -2, 8, -4, 6, 1, -9 };
+
+        int[] tab2 = new int[10];
+
+        int indeksTab2 = 0;
+        foreach (int liczba in tab1)
+        {
+            if (liczba > 0)
+            {
+                tab2[indeksTab2] = liczba;
+                indeksTab2++;
+
+                if (indeksTab2 == 10)
+                    break;
+            }
+        }
+
+        Console.WriteLine("Zawartość tablicy tab1:");
+        foreach (int liczba in tab1)
+        {
+            Console.Write(liczba + " ");
+        }
+
+        Console.WriteLine("\n\nZawartość tablicy tab2 (wartości dodatnie z tab1):");
+        foreach (int liczba in tab2)
+        {
+            Console.Write(liczba + " ");
+        }
+    }
+}
