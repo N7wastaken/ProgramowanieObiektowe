@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Wprowadź łańcuch znaków: ");
+        string lancuch = Console.ReadLine();
+
+        Dictionary<char, int> czestoscZnakow = AnalizujCzestoscZnakow(lancuch);
+
+        Console.WriteLine("Częstość występowania poszczególnych znaków:");
+        foreach (var para in czestoscZnakow)
+        {
+            Console.WriteLine($"{para.Key} - {para.Value}");
+        }
+    }
+
+    static Dictionary<char, int> AnalizujCzestoscZnakow(string lancuch)
+    {
+        Dictionary<char, int> czestoscZnakow = new Dictionary<char, int>();
+
+        foreach (char znak in lancuch)
+        {
+            if (czestoscZnakow.ContainsKey(znak))
+            {
+                czestoscZnakow[znak]++;
+            }
+            else
+            {
+                czestoscZnakow[znak] = 1;
+            }
+        }
+
+        return czestoscZnakow;
+    }
+}
