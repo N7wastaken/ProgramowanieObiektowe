@@ -1,0 +1,52 @@
+using System;
+
+class Punkt
+{
+    private double x;
+    private double y;
+
+    public Punkt(double x, double y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+    public double X
+    {
+        get { return x; }
+        set { x = value; }
+    }
+
+    public double Y
+    {
+        get { return y; }
+        set { y = value; }
+    }
+
+    public void Przesun(double deltaX, double deltaY)
+    {
+        x += deltaX;
+        y += deltaY;
+    }
+
+    public void Wyswietl()
+    {
+        Console.WriteLine($"Aktualne współrzędne: ({x}, {y})");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Punkt punkt = new Punkt(2.5, 3.0);
+
+        Console.WriteLine("Początkowe współrzędne punktu:");
+        punkt.Wyswietl();
+
+        punkt.Przesun(1.5, -0.5);
+
+        Console.WriteLine("\nWspółrzędne punktu po przesunięciu:");
+        punkt.Wyswietl();
+    }
+}
