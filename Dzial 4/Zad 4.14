@@ -1,0 +1,38 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string[] identyfikatory = { "KOMG-2002", "BH-2010", "ABC-2015", "XYZ-2005", "LMN-2008" };
+
+        Console.WriteLine("Lata od zakupu dla poszczególnych środków trwałych:");
+
+        foreach (string identyfikator in identyfikatory)
+        {
+            int rokZakupu = PobierzRokZakupu(identyfikator);
+            int lataOdZakupu = ObliczLataOdZakupu(rokZakupu);
+
+            Console.WriteLine($"{identyfikator}: {lataOdZakupu} lat");
+        }
+    }
+
+    static int PobierzRokZakupu(string identyfikator)
+    {
+        int rokZakupu;
+        if (int.TryParse(identyfikator.Substring(identyfikator.Length - 4), out rokZakupu))
+        {
+            return rokZakupu;
+        }
+        else
+        {
+            throw new FormatException("Nie można uzyskać roku zakupu.");
+        }
+    }
+
+    static int ObliczLataOdZakupu(int rokZakupu)
+    {
+        int aktualnyRok = DateTime.Now.Year;
+        return aktualnyRok - rokZakupu;
+    }
+}
